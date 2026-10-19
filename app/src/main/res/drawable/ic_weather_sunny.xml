@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Sun Body -->
+    <path
+        android:fillColor="#FFFBC02D"
+        android:pathData="M24,14 A10,10 0 1,1 23.99,14 Z" />
+    <!-- Sun Rays -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFBC02D"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M24,5 L24,9 M24,39 L24,43 M5,24 L9,24 M39,24 L43,24 M10.5,10.5 L13.3,13.3 M34.7,34.7 L37.5,37.5 M10.5,37.5 L13.3,34.7 M34.7,13.3 L37.5,10.5" />
+    <!-- Small Cloud -->
+    <path
+        android:fillColor="#E0ECEFF1"
+        android:pathData="M38,32 C38,29.8 36.2,28 34,28 C33.7,28 33.4,28 33.1,28.1 C32.1,25.7 29.8,24 27,24 C23.7,24 21,26.7 21,30 C21,30.3 21,30.7 21.1,31 C19.9,31.3 19,32.5 19,34 C19,35.7 20.3,37 22,37 L37,37 C38.7,37 40,35.7 40,34 C40,32.9 39.2,32.2 38,32 Z" />
+</vector>

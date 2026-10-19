@@ -1,0 +1,75 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="120dp"
+    android:viewportWidth="400"
+    android:viewportHeight="240">
+
+    <!-- Sky Background Gradient -->
+    <path
+        android:pathData="M0,0h400v240h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="200"
+                android:endY="240"
+                android:startX="200"
+                android:startY="0"
+                android:type="linear">
+                <item android:color="#FF1A237E" android:offset="0.0" />
+                <item android:color="#FF283593" android:offset="0.4" />
+                <item android:color="#FFC2185B" android:offset="0.8" />
+                <item android:color="#FFF57C7E" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sun / Moon -->
+    <path
+        android:fillColor="#FFFFEB3B"
+        android:pathData="M300,70m-35,0a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+
+    <!-- Distant Mountain (Mt. Fuji Silhouette) -->
+    <path
+        android:fillColor="#33FFFFFF"
+        android:pathData="M60,200 L200,100 L260,140 L340,200 Z" />
+    <path
+        android:fillColor="#1AFFFFFF"
+        android:pathData="M180,114 L200,100 L215,110 Z" />
+
+    <!-- Mountain Range Foreground -->
+    <path
+        android:fillColor="#FF0D1B2A"
+        android:pathData="M0,240 L0,180 L80,140 L160,170 L260,130 L360,170 L400,150 L400,240 Z" />
+
+    <!-- Pagoda Silhouette Left -->
+    <!-- Pagoda Roof 1 -->
+    <path
+        android:fillColor="#FF1B263B"
+        android:pathData="M40,175 L80,175 L70,165 L50,165 Z" />
+    <!-- Pagoda Tier 2 -->
+    <path
+        android:fillColor="#FF1B263B"
+        android:pathData="M45,165 L75,165 L68,155 L52,155 Z" />
+    <!-- Pagoda Tier 3 -->
+    <path
+        android:fillColor="#FF1B263B"
+        android:pathData="M48,155 L72,155 L65,145 L55,145 Z" />
+    <!-- Pagoda Spire -->
+    <path
+        android:fillColor="#FF1B263B"
+        android:pathData="M59,145 L61,145 L61,130 L59,130 Z" />
+
+    <!-- Cherry Blossom Branch Silhouettes -->
+    <path
+        android:fillColor="#FFFF80AB"
+        android:pathData="M320,30m-8,0a8,8 0 1,0 16,0a8,8 0 1,0 -16,0" />
+    <path
+        android:fillColor="#FFFF4081"
+        android:pathData="M335,42m-10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0" />
+    <path
+        android:fillColor="#FFFF80AB"
+        android:pathData="M310,50m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+    <path
+        android:fillColor="#FFFF4081"
+        android:pathData="M350,25m-7,0a7,7 0 1,0 14,0a7,7 0 1,0 -14,0" />
+</vector>

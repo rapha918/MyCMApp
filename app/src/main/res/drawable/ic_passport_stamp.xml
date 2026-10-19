@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <!-- Outer stamp ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFD32F2F"
+        android:strokeWidth="3"
+        android:pathData="M48,8 A40,40 0 1,1 47.99,8 Z" />
+    <!-- Inner dashed ring -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#D9D32F2F"
+        android:strokeWidth="1.5"
+        android:pathData="M48,14 A34,34 0 1,1 47.99,14 Z" />
+    <!-- Central Star -->
+    <path
+        android:fillColor="#CCD32F2F"
+        android:pathData="M48,26 L51,35 L60,35 L53,40 L55,49 L48,44 L41,49 L43,40 L36,35 L45,35 Z" />
+    <!-- Stamp Airplane/Globe silhouette -->
+    <path
+        android:fillColor="#CCD32F2F"
+        android:pathData="M48,56 L58,62 L58,65 L48,60 L38,65 L38,62 Z" />
+</vector>
