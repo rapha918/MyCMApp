@@ -42,6 +42,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -96,9 +97,16 @@ fun getDiceDrawable(value: Int): Int {
 // -------------------------------------------------------------
 @Composable
 fun MainRollScreen(
+    initialDie: Int? = null,
     onNavigateToResult: (Int) -> Unit
 ) {
-    var currentDie by remember { mutableIntStateOf((1..6).random()) }
+    var currentDie by remember { mutableIntStateOf(initialDie ?: (1..6).random()) }
+
+    LaunchedEffect(initialDie) {
+        if (initialDie != null && initialDie in 1..6) {
+            currentDie = initialDie
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -202,7 +210,7 @@ fun MainRollScreen(
 @Composable
 fun DieResult1Screen(
     initialTemp: Int = 22,
-    onBack: () -> Unit
+    onBack: (updatedValue: Int) -> Unit
 ) {
     var mockTemp by remember { mutableIntStateOf(initialTemp) }
 
@@ -219,7 +227,7 @@ fun DieResult1Screen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = onBack,
+                    onClick = { onBack(1) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.2f)),
                     shape = RoundedCornerShape(12.dp)
                 ) {
@@ -254,7 +262,7 @@ fun DieResult1Screen(
 @Composable
 fun DieResult2Screen(
     initialValue: Int = 2,
-    onBack: () -> Unit
+    onBack: (updatedValue: Int) -> Unit
 ) {
     var dieValue by remember { mutableIntStateOf(initialValue) }
 
@@ -271,7 +279,7 @@ fun DieResult2Screen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = onBack,
+                onClick = { onBack(dieValue) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E3C72)),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -341,7 +349,7 @@ fun DieResult2Screen(
 @Composable
 fun DieResult3Screen(
     initialValue: Int = 3,
-    onBack: () -> Unit
+    onBack: (updatedValue: Int) -> Unit
 ) {
     var dieValue by remember { mutableIntStateOf(initialValue) }
     var textInput by remember { mutableStateOf(initialValue.toString()) }
@@ -359,7 +367,7 @@ fun DieResult3Screen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = onBack,
+                onClick = { onBack(dieValue) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E3C72)),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -408,8 +416,6 @@ fun DieResult3Screen(
                         newText.toIntOrNull()?.let { parsed ->
                             if (parsed in 1..6) {
                                 dieValue = parsed
-                            } else {
-                                dieValue = 3
                             }
                         }
                     },
@@ -431,7 +437,7 @@ fun DieResult3Screen(
 @Composable
 fun DieResult4Screen(
     onNavigateToScreen: (Int) -> Unit,
-    onBack: () -> Unit
+    onBack: (updatedValue: Int) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -445,7 +451,7 @@ fun DieResult4Screen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = onBack,
+                onClick = { onBack(4) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E3C72)),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -520,7 +526,7 @@ fun DieResult4Screen(
 @Composable
 fun DieResult5Screen(
     initialValue: Int = 5,
-    onBack: () -> Unit
+    onBack: (updatedValue: Int) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -535,7 +541,7 @@ fun DieResult5Screen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = onBack,
+                onClick = { onBack(initialValue) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E3C72)),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -578,7 +584,7 @@ fun DieResult5Screen(
         }
 
         Button(
-            onClick = onBack,
+            onClick = { onBack(initialValue) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(54.dp),
@@ -597,7 +603,7 @@ fun DieResult5Screen(
 fun DieResult6Screen(
     initialValue: Int = 6,
     onNavigateToResult: (Int) -> Unit,
-    onBack: () -> Unit
+    onBack: (updatedValue: Int) -> Unit
 ) {
     val firstDie = initialValue
     var secondDie by remember { mutableStateOf<Int?>(null) }
@@ -615,7 +621,7 @@ fun DieResult6Screen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = onBack,
+                onClick = { onBack(firstDie) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E3C72)),
                 shape = RoundedCornerShape(12.dp)
             ) {

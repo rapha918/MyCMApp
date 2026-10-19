@@ -44,8 +44,10 @@ fun NavGraph(
         startDestination = Screens.MainRoll.route,
         modifier = modifier
     ) {
-        composable(Screens.MainRoll.route) {
+        composable(Screens.MainRoll.route) { backStackEntry ->
+            val updatedDie = backStackEntry.savedStateHandle.get<Int>("updatedDie")
             MainRollScreen(
+                initialDie = updatedDie,
                 onNavigateToResult = { value -> navigateToDieResult(navController, value) }
             )
         }
@@ -57,7 +59,10 @@ fun NavGraph(
             val temp = backStackEntry.arguments?.getInt("temp") ?: 22
             DieResult1Screen(
                 initialTemp = temp,
-                onBack = { navController.popBackStack() }
+                onBack = { updatedVal ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
+                    navController.popBackStack()
+                }
             )
         }
 
@@ -68,7 +73,10 @@ fun NavGraph(
             val dieValue = backStackEntry.arguments?.getInt("dieValue") ?: 2
             DieResult2Screen(
                 initialValue = dieValue,
-                onBack = { navController.popBackStack() }
+                onBack = { updatedVal ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
+                    navController.popBackStack()
+                }
             )
         }
 
@@ -79,14 +87,20 @@ fun NavGraph(
             val dieValue = backStackEntry.arguments?.getInt("dieValue") ?: 3
             DieResult3Screen(
                 initialValue = dieValue,
-                onBack = { navController.popBackStack() }
+                onBack = { updatedVal ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
+                    navController.popBackStack()
+                }
             )
         }
 
         composable(Screens.DieResult4.route) {
             DieResult4Screen(
                 onNavigateToScreen = { screenNum -> navigateToDieResult(navController, screenNum) },
-                onBack = { navController.popBackStack() }
+                onBack = { updatedVal ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
+                    navController.popBackStack()
+                }
             )
         }
 
@@ -97,7 +111,10 @@ fun NavGraph(
             val dieValue = backStackEntry.arguments?.getInt("dieValue") ?: 5
             DieResult5Screen(
                 initialValue = dieValue,
-                onBack = { navController.popBackStack() }
+                onBack = { updatedVal ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
+                    navController.popBackStack()
+                }
             )
         }
 
@@ -109,7 +126,10 @@ fun NavGraph(
             DieResult6Screen(
                 initialValue = dieValue,
                 onNavigateToResult = { value -> navigateToDieResult(navController, value) },
-                onBack = { navController.popBackStack() }
+                onBack = { updatedVal ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
+                    navController.popBackStack()
+                }
             )
         }
     }
