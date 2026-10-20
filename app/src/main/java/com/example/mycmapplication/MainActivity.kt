@@ -92,9 +92,7 @@ fun getDiceDrawable(value: Int): Int {
     }
 }
 
-// -------------------------------------------------------------
 // MAIN ROLLER SCREEN
-// -------------------------------------------------------------
 @Composable
 fun MainRollScreen(
     initialDie: Int? = null,
@@ -204,9 +202,7 @@ fun MainRollScreen(
     }
 }
 
-// -------------------------------------------------------------
 // DIE RESULT 1: FAVORITE TRAVEL BADGE + REFRESH MOCK TEMP
-// -------------------------------------------------------------
 @Composable
 fun DieResult1Screen(
     initialTemp: Int = 22,
@@ -256,9 +252,8 @@ fun DieResult1Screen(
     }
 }
 
-// -------------------------------------------------------------
+
 // DIE RESULT 2: INCREMENT BY TWO BUTTON
-// -------------------------------------------------------------
 @Composable
 fun DieResult2Screen(
     initialValue: Int = 2,
@@ -343,9 +338,7 @@ fun DieResult2Screen(
     }
 }
 
-// -------------------------------------------------------------
 // DIE RESULT 3: TEXTFIELD TO UPDATE DIE
-// -------------------------------------------------------------
 @Composable
 fun DieResult3Screen(
     initialValue: Int = 3,
@@ -431,9 +424,8 @@ fun DieResult3Screen(
     }
 }
 
-// -------------------------------------------------------------
+
 // DIE RESULT 4: SIX NAVIGATION BUTTONS
-// -------------------------------------------------------------
 @Composable
 fun DieResult4Screen(
     onNavigateToScreen: (Int) -> Unit,
@@ -520,9 +512,7 @@ fun DieResult4Screen(
     }
 }
 
-// -------------------------------------------------------------
 // DIE RESULT 5: SIMPLE RESULT SCREEN
-// -------------------------------------------------------------
 @Composable
 fun DieResult5Screen(
     initialValue: Int = 5,
@@ -596,9 +586,7 @@ fun DieResult5Screen(
     }
 }
 
-// -------------------------------------------------------------
 // DIE RESULT 6: TWO DICE GAME WITH WIN/LOSS & NAVIGATION
-// -------------------------------------------------------------
 @Composable
 fun DieResult6Screen(
     initialValue: Int = 6,
@@ -734,7 +722,7 @@ fun DieResult6Screen(
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2196F3))
         ) {
             Text(
-                text = "🎲 Roll Second Die",
+                text = "Roll Second Die",
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.Bold,
                     color = Color.White
@@ -744,9 +732,7 @@ fun DieResult6Screen(
     }
 }
 
-// -------------------------------------------------------------
 // REUSABLE TRAVEL BADGE SCREEN (ASSIGNMENT #1 COMPONENT)
-// -------------------------------------------------------------
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TravelBadgeScreen(mockTemp: Int = 22, modifier: Modifier = Modifier) {
@@ -962,11 +948,11 @@ fun TravelBadgeScreen(mockTemp: Int = 22, modifier: Modifier = Modifier) {
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
-                        TagChip(label = "⛩️ Fushimi Inari")
-                        TagChip(label = "🏯 Golden Pavilion")
-                        TagChip(label = "🎋 Bamboo Grove")
-                        TagChip(label = "🍵 Tea Ceremonies")
-                        TagChip(label = "🌸 Cherry Blossoms")
+                        TagChip(label = "Fushimi Inari")
+                        TagChip(label = "Golden Pavilion")
+                        TagChip(label = "Bamboo Grove")
+                        TagChip(label = "Tea Ceremonies")
+                        TagChip(label = "Cherry Blossoms")
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
