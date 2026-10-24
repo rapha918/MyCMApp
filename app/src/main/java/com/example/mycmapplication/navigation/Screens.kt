@@ -2,6 +2,7 @@ package com.example.mycmapplication.navigation
 
 sealed class Screens(val route: String) {
     object MainRoll : Screens("main_roll")
+    object RickAndMorty : Screens("rick_and_morty")
     object DieResult1 : Screens("die_result_1/{temp}") {
         fun createRoute(temp: Int) = "die_result_1/$temp"
     }

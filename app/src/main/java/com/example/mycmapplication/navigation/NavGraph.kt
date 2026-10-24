@@ -15,6 +15,7 @@ import com.example.mycmapplication.DieResult4Screen
 import com.example.mycmapplication.DieResult5Screen
 import com.example.mycmapplication.DieResult6Screen
 import com.example.mycmapplication.MainRollScreen
+import com.example.mycmapplication.rickandmorty.RickAndMortyScreen
 
 @Composable
 fun AppNavigationHost(modifier: Modifier = Modifier) {
@@ -48,7 +49,14 @@ fun NavGraph(
             val updatedDie = backStackEntry.savedStateHandle.get<Int>("updatedDie")
             MainRollScreen(
                 initialDie = updatedDie,
-                onNavigateToResult = { value -> navigateToDieResult(navController, value) }
+                onNavigateToResult = { value -> navigateToDieResult(navController, value) },
+                onNavigateToRickAndMorty = { navController.navigate(Screens.RickAndMorty.route) }
+            )
+        }
+
+        composable(Screens.RickAndMorty.route) {
+            RickAndMortyScreen(
+                onBack = { navController.popBackStack() }
             )
         }
 
@@ -97,6 +105,7 @@ fun NavGraph(
         composable(Screens.DieResult4.route) {
             DieResult4Screen(
                 onNavigateToScreen = { screenNum -> navigateToDieResult(navController, screenNum) },
+                onNavigateToRickAndMorty = { navController.navigate(Screens.RickAndMorty.route) },
                 onBack = { updatedVal ->
                     navController.previousBackStackEntry?.savedStateHandle?.set("updatedDie", updatedVal)
                     navController.popBackStack()

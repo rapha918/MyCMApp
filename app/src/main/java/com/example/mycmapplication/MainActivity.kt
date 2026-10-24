@@ -96,7 +96,8 @@ fun getDiceDrawable(value: Int): Int {
 @Composable
 fun MainRollScreen(
     initialDie: Int? = null,
-    onNavigateToResult: (Int) -> Unit
+    onNavigateToResult: (Int) -> Unit,
+    onNavigateToRickAndMorty: () -> Unit = {}
 ) {
     var currentDie by remember { mutableIntStateOf(initialDie ?: (1..6).random()) }
 
@@ -131,26 +132,26 @@ fun MainRollScreen(
             text = "Roll as much as you want, then tap 'Go to Result'",
             style = MaterialTheme.typography.bodyMedium.copy(color = Color.White.copy(alpha = 0.8f)),
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 8.dp, bottom = 32.dp)
+            modifier = Modifier.padding(top = 8.dp, bottom = 24.dp)
         )
 
         Card(
             shape = RoundedCornerShape(24.dp),
             colors = CardDefaults.cardColors(containerColor = Color.White),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(8.dp)
         ) {
             Column(
-                modifier = Modifier.padding(32.dp),
+                modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     painter = painterResource(id = getDiceDrawable(currentDie)),
                     contentDescription = "Die Face $currentDie",
-                    modifier = Modifier.size(140.dp)
+                    modifier = Modifier.size(130.dp)
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
                     text = "Current Roll: $currentDie",
@@ -162,13 +163,13 @@ fun MainRollScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Button(
             onClick = { currentDie = (1..6).random() },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(54.dp),
+                .height(50.dp),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))
         ) {
@@ -181,13 +182,13 @@ fun MainRollScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Button(
             onClick = { onNavigateToResult(currentDie) },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(54.dp),
+                .height(50.dp),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
         ) {
@@ -196,6 +197,25 @@ fun MainRollScreen(
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.Bold,
                     color = Color.White
+                )
+            )
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(
+            onClick = onNavigateToRickAndMorty,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp),
+            shape = RoundedCornerShape(16.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00E676))
+        ) {
+            Text(
+                text = "🛸 RICK & MORTY EXPLORER",
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
                 )
             )
         }
@@ -429,6 +449,7 @@ fun DieResult3Screen(
 @Composable
 fun DieResult4Screen(
     onNavigateToScreen: (Int) -> Unit,
+    onNavigateToRickAndMorty: () -> Unit = {},
     onBack: (updatedValue: Int) -> Unit
 ) {
     Column(
@@ -492,7 +513,7 @@ fun DieResult4Screen(
                     onClick = { onNavigateToScreen(screenNum) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(46.dp),
+                        .height(44.dp),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = when (screenNum) {
@@ -507,6 +528,17 @@ fun DieResult4Screen(
                 ) {
                     Text(text = label, fontWeight = FontWeight.Bold, color = Color.White)
                 }
+            }
+
+            Button(
+                onClick = onNavigateToRickAndMorty,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(44.dp),
+                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00E676))
+            ) {
+                Text("🛸 Rick & Morty API Explorer", fontWeight = FontWeight.Bold, color = Color.Black)
             }
         }
     }
