@@ -62,9 +62,9 @@ fun NavGraph(
 
         composable(
             route = Screens.DieResult1.route,
-            arguments = listOf(navArgument("temp") { type = NavType.IntType; defaultValue = 22 })
+            arguments = listOf(navArgument("temp") { type = NavType.IntType; defaultValue = 1 })
         ) { backStackEntry ->
-            val temp = backStackEntry.arguments?.getInt("temp") ?: 22
+            val temp = backStackEntry.arguments?.getInt("temp") ?: 1
             DieResult1Screen(
                 initialTemp = temp,
                 onBack = { updatedVal ->
